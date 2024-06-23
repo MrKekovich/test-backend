@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+  postgres:
+    image: postgres:10
+    ports:
+      - "45533:5432"
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: dev_mem
