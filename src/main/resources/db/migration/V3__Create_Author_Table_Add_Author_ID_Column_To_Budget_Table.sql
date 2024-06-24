@@ -1,0 +1,9 @@
+CREATE TABLE author
+(
+    id         SERIAL PRIMARY KEY,
+    full_name  VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE budget
+    ADD COLUMN author_id INTEGER REFERENCES author (id);
