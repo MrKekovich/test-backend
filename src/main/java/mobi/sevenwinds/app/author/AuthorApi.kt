@@ -10,17 +10,17 @@ import org.joda.time.DateTime
 
 fun NormalOpenAPIRoute.author() {
     route("/author") {
-        route("/add").post<Unit, AuthorRecord, AuthorCreateRequest>(info("Добавить запись")) { param, body ->
+        route("/add").post<Unit, AuthorRs, AuthorRq>(info("Добавить запись")) { param, body ->
             respond(AuthorService.createAuthor(body))
         }
     }
 }
 
-data class AuthorCreateRequest(
+data class AuthorRq(
     @Length(1, max = 255) val fullName: String,
 )
 
-data class AuthorRecord(
+data class AuthorRs(
     val id: Int,
     val fullName: String,
     val createdAt: DateTime,

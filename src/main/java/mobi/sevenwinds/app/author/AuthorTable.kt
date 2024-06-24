@@ -21,7 +21,7 @@ class AuthorEntity(id: EntityID<Int>) : IntEntity(id) {
     var createdAt by AuthorTable.createdAt
 //    val budgets by BudgetEntity optionalReferrersOn BudgetTable.authorId  // Uncomment if needed
 
-    fun toResponse(): AuthorRecord {
-        return AuthorRecord(id.value, fullName, createdAt)
+    fun toResponse(): AuthorRs {
+        return AuthorRs(id.value, fullName, createdAt)
     }
 }
