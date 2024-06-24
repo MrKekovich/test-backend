@@ -2,18 +2,22 @@ package mobi.sevenwinds.app.budget
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import mobi.sevenwinds.app.author.AuthorEntity
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object BudgetService {
-    suspend fun addRecord(body: BudgetRecord): BudgetRecord = withContext(Dispatchers.IO) {
+    suspend fun addRecord(body: BudgetRq): BudgetRs = withContext(Dispatchers.IO) {
         transaction {
+            val author = body.authorId?.let { AuthorEntity.findById(it) }
+
             val entity = BudgetEntity.new {
                 this.year = body.year
                 this.month = body.month
                 this.amount = body.amount
                 this.type = body.type
+                this.author = author
             }
 
             return@transaction entity.toResponse()
