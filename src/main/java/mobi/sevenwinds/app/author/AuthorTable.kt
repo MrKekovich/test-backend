@@ -22,6 +22,6 @@ class AuthorEntity(id: EntityID<Int>) : IntEntity(id) {
 //    val budgets by BudgetEntity optionalReferrersOn BudgetTable.authorId  // Uncomment if needed
 
     fun toResponse(): AuthorRs {
-        return AuthorRs(id.value, fullName, createdAt)
+        return AuthorRs(id.value, fullName, createdAt.toString())
     }
 }

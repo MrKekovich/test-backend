@@ -23,5 +23,5 @@ data class AuthorRq(
 data class AuthorRs(
     val id: Int,
     val fullName: String,
-    val createdAt: DateTime,
+    val createdAt: String,
 )
